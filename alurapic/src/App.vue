@@ -16,17 +16,13 @@ export default {
 
     return{
       titulo: 'Alurapic',
-      fotos: [
-        {
-          url: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTwV4kVzT5McBdGSgqlVeRzubrNH_mOrrkKseDOGFURq20HmsrelEfMU7It",
-          nome: "Cachorro"
-        },
-        {
-          url: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTwV4kVzT5McBdGSgqlVeRzubrNH_mOrrkKseDOGFURq20HmsrelEfMU7It",
-          nome: "Cachorro2"
-        }
-      ],
+      fotos: [],
     }
+
+  },
+
+  created() {
+    alert("Criei um componente");
 
   }
 
