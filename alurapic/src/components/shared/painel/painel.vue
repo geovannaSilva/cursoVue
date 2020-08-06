@@ -32,7 +32,7 @@ export default {
 
 <style scoped>
 .painel {
-
+  padding: 0 auto;
   border: solid 2px grey;
   display: inline-block;
   margin: 5px;

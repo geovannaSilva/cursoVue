@@ -1,62 +1,34 @@
 <template>
   <div class="corpo">
 
-    <h1 class="centralizado">{{ titulo }}</h1>
+    <meu-menu :rotas="routes"></meu-menu>
 
-    <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="Filtre por parte do titulo">
-
-    <ul class="lista-fotos">
-
-      <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
-
-        <meu-painel :titulo="foto.titulo">
-          <img id="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
-        </meu-painel>
-
-      </li>
-    </ul>
+    <transition name="pagina">
+      <router-view></router-view>
+    </transition>
 
   </div>
 </template>
 
 <script>
-import Painel from './components/shared/painel/painel.vue'
+
+import { routes } from './routes';
+import Menu from './components/shared/menu/Menu.vue';
 
 export default {
 
   components: {
-
-    'meu-painel': Painel
+    'meu-menu': Menu
   },
 
-  data () {
+  data() {
+
     return {
-      titulo: 'Alurapic',
-
-      fotos: [],
-      filtro: "",
+      routes
     }
-  },
-
-  computed: {
-    fotosComFiltro(){
-        if (this.filtro){
-          let exp = new RegExp(this.filtro.trim(), 'i');
-          return this.fotos.filter(foto => exp.test(foto.titulo));
-        }else{
-          return this.fotos;
-        }
-    }
-  },
-
-  created() {
-
-    this.$http
-      .get('http://localhost:3000/v1/fotos')
-      .then(res => res.json())
-      .then(fotos => this.fotos = fotos, err => console.log(err));
   }
 }
+
 </script>
 
 <style>
@@ -67,26 +39,12 @@ export default {
   margin: 0 auto;
 }
 
-.centralizado {
-  text-align: center;
+.pagina-enter, .pagina-leave-active {
+  opacity: 0
 }
 
-.lista-fotos {
-  list-style: none;
-}
-
-.lista-fotos .lista-fotos-item {
-  display: inline-block;
-}
-
-.filtro {
-  display: block;
-  width: 100%;
-}
-
-#imagem-responsiva {
-  padding: 15px auto;
-  width: inherit;
+.pagina-enter-active, .pagina-leave-active {
+  transition: opacity .4s;
 }
 
 </style>
