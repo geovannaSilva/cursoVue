@@ -2,6 +2,7 @@
 
   <div>
     <h1 class="centralizado">Cadastro</h1>
+<<<<<<< HEAD
     <h2 class="centralizado">{{ foto.titulo }}</h2>
 
     <h2 v-if="foto._id" class="centralizado">Alterando</h2>
@@ -12,23 +13,44 @@
         <label for="titulo">TÍTULO</label>
         <input data-vv-as="título" name="titulo" v-validate data-vv-rules="required|min:3|max:30" v-model="foto.titulo" id="titulo" autocomplete="off">
         <span class="erro" v-show="errors.has('titulo')">{{ errors.first('titulo') }}</span>
+=======
+    <h2 class="centralizado"></h2>
+
+    <form>
+      <div class="controle">
+        <label for="titulo">TÍTULO</label>
+        <input id="titulo" autocomplete="off">
+>>>>>>> 83ea4964ba67308749b675ee94a9115b0df9bc3b
       </div>
 
       <div class="controle">
         <label for="url">URL</label>
+<<<<<<< HEAD
         <input name="url" v-validate data-vv-rules="required" v-model="foto.url" id="url" autocomplete="off">
         <span class="erro" v-show="errors.has('url')">{{ errors.first('url') }}</span>
         <imagem-responsiva v-show="foto.url" :url="foto.url" :titulo="foto.titulo"/>
+=======
+        <input id="url" autocomplete="off">
+        <imagem-responsiva/>
+>>>>>>> 83ea4964ba67308749b675ee94a9115b0df9bc3b
       </div>
 
       <div class="controle">
         <label for="descricao">DESCRIÇÃO</label>
+<<<<<<< HEAD
         <textarea v-model="foto.descricao" id="descricao" autocomplete="off"></textarea>
+=======
+        <textarea id="descricao" autocomplete="off"></textarea>
+>>>>>>> 83ea4964ba67308749b675ee94a9115b0df9bc3b
       </div>
 
       <div class="centralizado">
         <meu-botao rotulo="GRAVAR" tipo="submit"/>
+<<<<<<< HEAD
         <router-link :to="{ name: 'home' }"><meu-botao rotulo="VOLTAR" tipo="button"/></router-link>
+=======
+        <router-link to="/"><meu-botao rotulo="VOLTAR" tipo="button"/></router-link>
+>>>>>>> 83ea4964ba67308749b675ee94a9115b0df9bc3b
       </div>
 
     </form>
@@ -37,15 +59,21 @@
 
 <script>
 
+<<<<<<< HEAD
 import ImagemResponsiva from '../shared/imagem-responsiva/imagemResponsiva.vue';
 import Botao from '../shared/botao/Botao';
 import Foto from '../../domain/foto/foto.js';
 import FotoService from "../../domain/foto/FotoService.js";
+=======
+import ImagemResponsiva from '../shared/imagem-responsiva/ImagemResponsiva.vue'
+import Botao from '../shared/botao/Botao.vue';
+>>>>>>> 83ea4964ba67308749b675ee94a9115b0df9bc3b
 
 export default {
 
   components: {
 
+<<<<<<< HEAD
     'imagem-responsiva': ImagemResponsiva,
     'meu-botao': Botao
   },
@@ -92,6 +120,10 @@ export default {
       .then(foto => this.foto = foto);
     }
 
+=======
+    'imagem-responsiva': ImagemResponsiva, 
+    'meu-botao': Botao
+>>>>>>> 83ea4964ba67308749b675ee94a9115b0df9bc3b
   }
 }
 
@@ -120,9 +152,12 @@ export default {
   .centralizado {
     text-align: center;
   }
+<<<<<<< HEAD
 
   .erro {
     color: red;
   }
+=======
+>>>>>>> 83ea4964ba67308749b675ee94a9115b0df9bc3b
 
 </style>
