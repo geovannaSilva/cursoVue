@@ -11,7 +11,7 @@
 
         <meu-painel :titulo="foto.titulo">
 
-          <imagem-responsiva v-meu-transform :src="foto.url" :alt="foto.titulo"></imagem-responsiva>
+         <imagem-responsiva :url="foto.url" :titulo="foto.titulo" v-meu-transform:scale.animate="1.2"/>
 
           <meu-botao
             rotulo="remover"
