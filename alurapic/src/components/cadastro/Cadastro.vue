@@ -2,55 +2,36 @@
 
   <div>
     <h1 class="centralizado">Cadastro</h1>
-<<<<<<< HEAD
     <h2 class="centralizado">{{ foto.titulo }}</h2>
 
     <h2 v-if="foto._id" class="centralizado">Alterando</h2>
     <h2 v-else class="centralizado">Incluindo</h2>
 
     <form @submit.prevent="grava()">
-      <div class="controle">
-        <label for="titulo">TÍTULO</label>
-        <input data-vv-as="título" name="titulo" v-validate data-vv-rules="required|min:3|max:30" v-model="foto.titulo" id="titulo" autocomplete="off">
-        <span class="erro" v-show="errors.has('titulo')">{{ errors.first('titulo') }}</span>
-=======
-    <h2 class="centralizado"></h2>
 
-    <form>
       <div class="controle">
         <label for="titulo">TÍTULO</label>
-        <input id="titulo" autocomplete="off">
->>>>>>> 83ea4964ba67308749b675ee94a9115b0df9bc3b
+        <input data-vv-as="título" name="titulo" v-validate data-vv-rules="required|min:3|max:30" id="titulo" autocomplete="off" v-model="foto.titulo">
+        <span class="erro" v-show="errors.has('titulo')">{{ errors.first('titulo') }}</span>
       </div>
 
       <div class="controle">
         <label for="url">URL</label>
-<<<<<<< HEAD
-        <input name="url" v-validate data-vv-rules="required" v-model="foto.url" id="url" autocomplete="off">
+        <input name="url" v-validate data-vv-rules="required" id="url" autocomplete="off" v-model="foto.url">
         <span class="erro" v-show="errors.has('url')">{{ errors.first('url') }}</span>
         <imagem-responsiva v-show="foto.url" :url="foto.url" :titulo="foto.titulo"/>
-=======
-        <input id="url" autocomplete="off">
-        <imagem-responsiva/>
->>>>>>> 83ea4964ba67308749b675ee94a9115b0df9bc3b
+
       </div>
 
       <div class="controle">
         <label for="descricao">DESCRIÇÃO</label>
-<<<<<<< HEAD
-        <textarea v-model="foto.descricao" id="descricao" autocomplete="off"></textarea>
-=======
-        <textarea id="descricao" autocomplete="off"></textarea>
->>>>>>> 83ea4964ba67308749b675ee94a9115b0df9bc3b
+        <textarea id="descricao" autocomplete="off" v-model="foto.descricao">
+        </textarea>
       </div>
 
       <div class="centralizado">
         <meu-botao rotulo="GRAVAR" tipo="submit"/>
-<<<<<<< HEAD
-        <router-link :to="{ name: 'home' }"><meu-botao rotulo="VOLTAR" tipo="button"/></router-link>
-=======
-        <router-link to="/"><meu-botao rotulo="VOLTAR" tipo="button"/></router-link>
->>>>>>> 83ea4964ba67308749b675ee94a9115b0df9bc3b
+        <router-link :to="{ name: 'home'}"><meu-botao rotulo="VOLTAR" tipo="button"/></router-link>
       </div>
 
     </form>
@@ -59,26 +40,21 @@
 
 <script>
 
-<<<<<<< HEAD
-import ImagemResponsiva from '../shared/imagem-responsiva/imagemResponsiva.vue';
-import Botao from '../shared/botao/Botao';
-import Foto from '../../domain/foto/foto.js';
-import FotoService from "../../domain/foto/FotoService.js";
-=======
 import ImagemResponsiva from '../shared/imagem-responsiva/ImagemResponsiva.vue'
 import Botao from '../shared/botao/Botao.vue';
->>>>>>> 83ea4964ba67308749b675ee94a9115b0df9bc3b
+import Foto from '../../domain/foto/Foto';
+import FotoService from '../../domain/foto/FotoService';
 
 export default {
 
   components: {
 
-<<<<<<< HEAD
     'imagem-responsiva': ImagemResponsiva,
     'meu-botao': Botao
   },
 
   data() {
+
     return {
 
       foto: new Foto(),
@@ -91,22 +67,19 @@ export default {
     grava() {
 
       this.$validator
-      .validateAll()
-      .then(success => {
+        .validateAll()
+        .then(success => {
 
-        if(success){
-          this.service
-            .cadastra(this.foto)
-            .then(() =>  {
-              if(this.id) this.$router.push({ name: 'home'});
-              this.foto = new Foto();
-            }, err => console.log(err));
-        }
+          if(success) {
 
-      })
-
-
-
+            this.service
+              .cadastra(this.foto)
+              .then(() => {
+                if(this.id) this.$router.push({ name: 'home' });
+                this.foto = new Foto();
+              }, err => console.log(err));
+          }
+        });
     }
   },
 
@@ -116,48 +89,39 @@ export default {
 
     if(this.id) {
       this.service
-      .busca(this.id)
-      .then(foto => this.foto = foto);
+        .busca(this.id)
+        .then(foto => this.foto = foto);
     }
-
-=======
-    'imagem-responsiva': ImagemResponsiva, 
-    'meu-botao': Botao
->>>>>>> 83ea4964ba67308749b675ee94a9115b0df9bc3b
   }
 }
 
 </script>
 <style scoped>
 
-  .centralizado {
-    text-align: center;
-  }
-  .controle {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+.centralizado {
+  text-align: center;
+}
+.controle {
+  font-size: 1.2em;
+  margin-bottom: 20px;
 
-  }
-  .controle label {
-    display: block;
-    font-weight: bold;
-  }
+}
+.controle label {
+  display: block;
+  font-weight: bold;
+}
 
- .controle label + input, .controle textarea {
-    width: 100%;
-    font-size: inherit;
-    border-radius: 5px
-  }
+.controle label + input, .controle textarea {
+  width: 100%;
+  font-size: inherit;
+  border-radius: 5px
+}
 
-  .centralizado {
-    text-align: center;
-  }
-<<<<<<< HEAD
+.centralizado {
+  text-align: center;
+}
 
-  .erro {
-    color: red;
-  }
-=======
->>>>>>> 83ea4964ba67308749b675ee94a9115b0df9bc3b
-
+.erro {
+  color: red;
+}
 </style>

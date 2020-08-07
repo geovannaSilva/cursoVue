@@ -6,6 +6,12 @@ import './directives/Transform.js';
 import VeeValidate from 'vee-validate';
 import msg from './pt_BR';
 
+import 'bootstrap/dist/css/bootstrap.css';
+
+import './assets/css/teste.css';
+
+import './assets/js/teste.js'
+
 import { routes } from './routes';
 
 Vue.use(VueResource);
